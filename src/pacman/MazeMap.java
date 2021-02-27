@@ -31,8 +31,8 @@ public class MazeMap {
 	/**
 	 * Returns whether the square in this maze at row index {@code row} and column index {@code column} is passable.
 	 * The square in the top-left corner of the maze has row index 0 and column index 0.
-	 * @throws | rowIndex <= 0 && rowIndex >getWidth()
-	 * @throws | columnIndex <= 0 && columnIndex >getHeight()
+	 * @throws | rowIndex <= 0 || rowIndex >getWidth()
+	 * @throws | columnIndex <= 0 || columnIndex >getHeight()
 	 * @post   | result == true || result == false
 	 * 
 	 * 
