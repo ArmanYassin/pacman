@@ -8,6 +8,7 @@ import java.util.Arrays;
  */
 public class Square {
 	
+	
 	public MazeMap getMazeMap() { throw new RuntimeException("Not yet implemented"); }
 	
 	public int getRowIndex() { throw new RuntimeException("Not yet implemented"); }
