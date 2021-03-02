@@ -36,7 +36,7 @@ public class MazeMap {
 	 * Returns whether the square in this maze at row index {@code row} and column index {@code column} is passable.
 	 * The square in the top-left corner of the maze has row index 0 and column index 0.
 	 * @throws IndexOutOfBoundsException if the given rowIndex is less than zero or not less then the width of this MazeMap object
-	 * 		| rowIndex < 0 || rowIndex > getWidth() //! ik denk strict kleiner omdat (0,0) nog bij de map hoort?
+	 * 		| rowIndex < 0 || rowIndex > getWidth() //! ik denk strict kleiner omdat (0,0) nog bij de map hoort? 
 	 * @throws IndexOutOfBoundsException if the given columnIndex is less than zero or not less then the width of this MazeMap object
 	 *		| columnIndex < 0 || columnIndex > getHeight() 
 	 * @post   | result == true || result == false
@@ -47,6 +47,7 @@ public class MazeMap {
 	public boolean isPassable(int rowIndex, int columnIndex) { 
 		if (rowIndex < 0 || rowIndex > getWidth()) throw new IndexOutOfBoundsException();
 		if (columnIndex < 0 || columnIndex > getHeight()) throw new IndexOutOfBoundsException();
+		return passable.clone()[columnIndex * getWidth() + rowIndex];
 		
 	}
 	
@@ -66,7 +67,7 @@ public class MazeMap {
 	 * 
 	 * @post   | getWidth() == width
 	 * @post   | getHeight() == height
-	 *         
+	 *   
 	 *               
 	 * 
 	 */
@@ -80,6 +81,8 @@ public class MazeMap {
 		if (passable.length == width * height)
 			throw new IllegalArgumentException("length of passable deviates from dimension");
 		
-		//throw new RuntimeException("Not yet implemented");
+		this.width = width;
+		this.height = height; 
+		this.passable = passable.clone();
 	}
 }
