@@ -2,6 +2,7 @@ package pacman;
 
 import java.util.Arrays;
 
+
 import pacman.MazeMap;
 
 /**
@@ -131,26 +132,36 @@ public class Square {
 	 */
 	// No formal documentation required
 	public Direction[] getPassableDirectionsExcept(Direction excludedDirection) {
-		//Square current = this;
-		Direction [] passableDirection = new Direction[0];
-
-		Direction one =Direction.LEFT;
-		Direction two =Direction.DOWN;
-		
-		//Is er een manier om zo een bruut enumeratie van alle mogelijkheden te vermijden????
-		// want als ik zo verder ga zijn er per richting 7 mogelijkheden!
-		int direction = 2;
-		switch(direction) {
-		case 1 :
-			excludedDirection = one;
-			if(canMove(excludedDirection.getOpposite())
-					&&canMove(Direction.UP) 
-					&&canMove(Direction.DOWN))
-				passableDirection = new Direction [] {Direction.RIGHT,Direction.UP, Direction.DOWN};
-			else if (!canMove(excludedDirection.getOpposite()))
-				passableDirection = new Direction [] {Direction.UP, Direction.DOWN};
-				break;
+		Direction[] allDirections = new Direction []{Direction.LEFT, Direction.RIGHT,Direction.UP, Direction.DOWN};
+		Direction [] possibleDirection = new Direction [3];
+		int pos = 0;
+			for(int i = 0; i<4; i++)
+				if(allDirections[i]==excludedDirection)
+					pos = i;
+		for (int i = 0, k = 0; i < allDirections.length; i++) { 
+            if (i == pos) { 
+                continue; 
+            } 
+            possibleDirection[k++] = allDirections[i]; 
+        }
+		int count = 0; Direction val;
+		for(int i = 0; i<possibleDirection.length; i++) {
+			if(canMove(possibleDirection[i])) {
+				count++; 						
+			}	
 		}
+		Direction [] passableDirection = new Direction [count];
+		for(int i = 0,k=0; i<possibleDirection.length; i++) {
+			if(!canMove(possibleDirection[i])) {
+				continue;
+			}
+			passableDirection[k++] = possibleDirection[i];
+		}
+		
+
+	
+	
+
 		
 		
 
