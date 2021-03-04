@@ -47,8 +47,9 @@ public enum Direction {
 			passableDirection[k++] = possibleDirection[i];
 		}
 		
+		
 
 
-		System.out.println("test"+passableDirection[1]);
+		System.out.println("test");
 	} 
 }
