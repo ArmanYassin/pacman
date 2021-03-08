@@ -47,7 +47,7 @@ public class MazeMap {
 	public boolean isPassable(int rowIndex, int columnIndex) { 
 		if (rowIndex < 0 || rowIndex > getWidth()) throw new IndexOutOfBoundsException();
 		if (columnIndex < 0 || columnIndex > getHeight()) throw new IndexOutOfBoundsException();
-		return passable.clone()[columnIndex * getWidth() + rowIndex];
+		return passable.clone()[rowIndex * getHeight() + columnIndex];
 		
 	}
 	
@@ -78,7 +78,7 @@ public class MazeMap {
 			throw new IllegalArgumentException("Negative number of rows");
 		if (passable == null)
 			throw new IllegalArgumentException("passable is null");
-		if (passable.length == width * height)
+		if (passable.length != width * height)
 			throw new IllegalArgumentException("length of passable deviates from dimension");
 		
 		this.width = width;

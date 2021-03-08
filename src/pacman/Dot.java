@@ -21,7 +21,7 @@ public class Dot {
 	 * 
 	 * @param square
 	 */
-	
+
 	public Dot(Square square) { 
 		this.square = square;
 		//throw new RuntimeException("Not yet implemented"); 

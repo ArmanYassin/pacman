@@ -17,8 +17,8 @@ public class PacMan {
 	 * @return
 	 */
 	public Square getSquare() { 
-		//return square;
-		throw new RuntimeException("Not yet implemented"); 
+		return square;
+		//throw new RuntimeException("Not yet implemented"); 
 	}
 	
 	/**
@@ -26,21 +26,21 @@ public class PacMan {
 	 * @return
 	 */
 	public int getNbLives() { 
-		//return lives;
-		throw new RuntimeException("Not yet implemented"); 
+		return lives;
+		//throw new RuntimeException("Not yet implemented"); 
 	}
 
 	public PacMan(int nbLives, Square square) {
-		//this.lives = nbLives;
-		//this.square = square;
-		throw new RuntimeException("Not yet implemented");
+		this.lives = nbLives;
+		this.square = square;
+		//throw new RuntimeException("Not yet implemented");
 	}
 	
 	public void setSquare(Square square) { 
-		//this.square=square;
-		throw new RuntimeException("Not yet implemented"); 
+		this.square=square;
+		//throw new RuntimeException("Not yet implemented"); 
 	}
-	
+
 	/**
 	 * Decreases this Pac-Man character's number of lives by one.
 	 */

@@ -1,7 +1,7 @@
 package pacman;
 
 import java.util.Arrays;
-
+import java.util.stream.IntStream;
 
 import pacman.MazeMap;
 
@@ -26,7 +26,7 @@ public class Square {
 	 * 
 	 */
 	public MazeMap getMazeMap() { 
-		return mazeMap;
+		return mazeMap;//copy meegeven? 
 	}
 	
 	/**
@@ -51,12 +51,11 @@ public class Square {
 	/**
 	 * returns if the object Square is passable 
 	 * 
-	 * @post | getMazeMap().isPassable(getRowIndex(),getColumnIndex())
+	 *  @post | result == getMazeMap().isPassable(getRowIndex(), getColumnIndex())
 	 */
 	
 	public boolean isPassable() { 
-		return mazeMap.isPassable(rowIndex, columnIndex);
-		
+		return this.getMazeMap().isPassable(rowIndex, columnIndex);	
 	}
 	
 	/**
@@ -144,6 +143,9 @@ public class Square {
             } 
             possibleDirection[k++] = allDirections[i]; 
         }
+		/*
+		 * vanaf hier wordt gegeven welke richtingen passeerbaar zijn 
+		 */
 		int count = 0; Direction val;
 		for(int i = 0; i<possibleDirection.length; i++) {
 			if(canMove(possibleDirection[i])) {
@@ -173,15 +175,25 @@ public class Square {
 	
 	/**
 	 * Returns whether the given square refers to the same {@code MazeMap} object and has the same row and column index as this square.
-	 *@throws IllegalArgumentException if the given square is null.
-	 * 		| other == null 
-	 * @post | result == this.equals(other)
+	 * @throws IllegalArgumentException if the given square is null.
+	 * 		 | other == null 
+	 * @post | result ==(this==other)
+	 * 
 	 */
+	
 	public boolean equals(Square other) {
 		if (other == null)
 			throw new IllegalArgumentException("Given square is null");
-		return this.equals(other);
-		//throw new RuntimeException("Not yet implemented");
+		return this == other;
+//		throw new RuntimeException("Not yet implemented");
 	}
-	
+//	public static void main(String args[]) 
+//	{
+//		MazeMap mazemap = new MazeMap(2, 2, new boolean[] {true,true,true,false});
+//		Square square = Square.of(mazemap, 0, 1);
+//		Square square2 = Square.of(mazemap, 1, 1);
+//		Square square00 = Square.of(mazemap, 0, 0);
+//		Square square10 = Square.of(mazemap, 1, 0);
+//		System.out.println("test-"+square10.getNeighbor(Direction.LEFT).getRowIndex());
+//	}
 }
