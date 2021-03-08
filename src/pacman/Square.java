@@ -89,8 +89,8 @@ public class Square {
 			throw new IllegalArgumentException("mazeMap is null");
 		return new Square(mazeMap,rowIndex,columnIndex);
 	}
-	
-	/**
+	 
+	/** 
 	 * Returns this square's neighbor in the given direction.
 	 * If this square has no neigbor in the given direction, return the square that is furthest away in the opposite direction.
 	 */
@@ -187,13 +187,5 @@ public class Square {
 		return this == other;
 //		throw new RuntimeException("Not yet implemented");
 	}
-//	public static void main(String args[]) 
-//	{
-//		MazeMap mazemap = new MazeMap(2, 2, new boolean[] {true,true,true,false});
-//		Square square = Square.of(mazemap, 0, 1);
-//		Square square2 = Square.of(mazemap, 1, 1);
-//		Square square00 = Square.of(mazemap, 0, 0);
-//		Square square10 = Square.of(mazemap, 1, 0);
-//		System.out.println("test-"+square10.getNeighbor(Direction.LEFT).getRowIndex());
-//	}
+
 }

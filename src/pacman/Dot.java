@@ -15,7 +15,7 @@ public class Dot {
 	public Square getSquare() {
 		return square;
 	}
-	
+	  
 	/**
 	 * 
 	 * Initializes this dot object with a given square.
@@ -24,6 +24,6 @@ public class Dot {
 	public Dot(Square square) { 
 		this.square = square;
 	}
-
+ 
 
 }

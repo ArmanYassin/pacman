@@ -5,7 +5,7 @@ package pacman;
  * @invar | 0 <= getNbLives() && getNbLives()<4
  */
 public class PacMan {
-	
+	 
 	/**
 	 * @invar | 0 <= lives && lives <4
 	 */
@@ -13,7 +13,7 @@ public class PacMan {
 	private Square square;
 	
 	/**
-	 * Returns the current square of a pacman object.
+	 * Returns the current square of a pacman object. 
 	 */
 	public Square getSquare() { 
 		return square;
