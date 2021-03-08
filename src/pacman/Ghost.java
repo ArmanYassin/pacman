@@ -7,18 +7,51 @@ import java.util.Random;
  */
 public class Ghost {
 	
-	public Square getSquare() { throw new RuntimeException("Not yet implemented"); }
+	private Square square;
+	private Direction direction;
+	
+	/**
+	 * Returns the square of a ghost object.
+	 * 
+	 */
+	public Square getSquare() {
+		return square;
+	}
 	
 	/**
 	 * Returns the direction in which this ghost will preferably move next.
 	 */
-	public Direction getDirection() { throw new RuntimeException("Not yet implemented"); }
+	public Direction getDirection() { 
+		return direction; 
+	}
 	
-	public Ghost(Square square, Direction direction) { throw new RuntimeException("Not yet implemented"); }
+	/**
+	 * Initializes this object so that it represents a ghost enemy who the player has to avoid. 
+	 * Each instance of this object has a given square, the position where it is, and a direction in which it is moving.
+	 * 
+	 * @post | getSquare() == square
+	 * @post | getDirection() == direction
+	 */
+	public Ghost(Square square, Direction direction) { 
+		this.square = square;
+		this.direction = direction;
+	}
 	
-	public void setSquare(Square square) { throw new RuntimeException("Not yet implemented"); }
+	/**
+	 * Changes the square of the ghost object to a given square.
+	 * 
+	 */
+	public void setSquare(Square square) { 
+		this.square = square; 
+	}
 	
-	public void setDirection(Direction direction) { throw new RuntimeException("Not yet implemented"); }
+	/**
+	 * Sets the direction of the ghost object.
+	 * 
+	 */
+	public void setDirection(Direction direction) { 
+		this.direction = direction; 
+	}
 	
 	private static int MOVE_FORWARD_PREFERENCE = 10;
 	

@@ -9,22 +9,20 @@ public class Dot {
 	
 	
 	/**
+	 * Returns the square of a dot object.
 	 * 
-	 * @return
 	 */
 	public Square getSquare() {
 		return square;
-		//throw new RuntimeException("Not yet implemented"); 
 	}
 	
 	/**
 	 * 
-	 * @param square
+	 * Initializes this dot object with a given square.
 	 */
 	
 	public Dot(Square square) { 
 		this.square = square;
-		//throw new RuntimeException("Not yet implemented"); 
 	}
 
 }
