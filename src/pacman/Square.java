@@ -16,6 +16,13 @@ import pacman.MazeMap;
  */
 public class Square {
 	
+	/**
+	 * @invar | 0 <= rowIndex
+	 * @invar | 0 <= columnIndex
+	 * @invar | mazeMap != null
+	 *      
+	 * @representationObject
+	 */
 	private final MazeMap mazeMap;
 	private final int rowIndex;
 	private final int columnIndex;
@@ -26,7 +33,7 @@ public class Square {
 	 * 
 	 */
 	public MazeMap getMazeMap() { 
-		return mazeMap;//copy meegeven? 
+		return mazeMap;
 	}
 	
 	/**
@@ -41,7 +48,7 @@ public class Square {
 	
 	/**
 	 * Returns the column position of the square object
-	 * @basic | 
+	 * @basic
 	 */
 	
 	public int getColumnIndex() { 
@@ -49,7 +56,7 @@ public class Square {
 	}
 	
 	/**
-	 * returns if the object Square is passable 
+	 * returns if the object Square is passable
 	 * 
 	 *  @post | result == getMazeMap().isPassable(getRowIndex(), getColumnIndex())
 	 */
@@ -59,7 +66,7 @@ public class Square {
 	}
 	
 	/**
-	 * Initialises this object to represent a square in a given location
+	 * Initializes this object to represent a square in a given location
 	 * @post | getMazeMap() == mazeMap
 	 * @post | getRowIndex() == rowIndex
 	 * @post | getColumnIndex() == columnIndex
@@ -92,7 +99,7 @@ public class Square {
 	 
 	/** 
 	 * Returns this square's neighbor in the given direction.
-	 * If this square has no neigbor in the given direction, return the square that is furthest away in the opposite direction.
+	 * If this square has no neighbor in the given direction, return the square that is farthest away in the opposite direction.
 	 */
 	// No formal documentation required
 	public Square getNeighbor(Direction direction) {
@@ -112,7 +119,6 @@ public class Square {
 		return neighbor;
 		
 		
-		//throw new RuntimeException("Not yet implemented");
 	}
 
 	/**
@@ -122,7 +128,6 @@ public class Square {
 	public boolean canMove(Direction direction) {
 		return this.getNeighbor(direction).isPassable();
 		
-		//throw new RuntimeException("Not yet implemented");
 	}
 
 	/**
@@ -143,9 +148,7 @@ public class Square {
             } 
             possibleDirection[k++] = allDirections[i]; 
         }
-		/*
-		 * vanaf hier wordt gegeven welke richtingen passeerbaar zijn 
-		 */
+		
 		int count = 0; Direction val;
 		for(int i = 0; i<possibleDirection.length; i++) {
 			if(canMove(possibleDirection[i])) {
@@ -170,7 +173,6 @@ public class Square {
 			
 			
 		return passableDirection;
-		//throw new RuntimeException("Not yet implemented");
 	}
 	
 	/**
@@ -185,7 +187,6 @@ public class Square {
 		if (other == null)
 			throw new IllegalArgumentException("Given square is null");
 		return this == other;
-//		throw new RuntimeException("Not yet implemented");
 	}
 
 }

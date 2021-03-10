@@ -6,12 +6,18 @@ import java.util.stream.IntStream;
 /**
  * Each instance of this class represents a maze layout, specifying the width and height of the maze
  * and, for each position in the maze, whether it is passable or not.
+ * @immutable
  * @invar | 0 <= getWidth()
  * @invar | 0 <= getHeight()
  */
 public class MazeMap {
 	
-	
+	/**
+	 * @invar | 0 <= width
+     * @invar | 0 <= height
+     * 
+     * @representationObject
+	 */
 	private int width;
 	private int height;
 	private boolean [] passable;
@@ -36,7 +42,7 @@ public class MazeMap {
 	 * Returns whether the square in this maze at row index {@code row} and column index {@code column} is passable.
 	 * The square in the top-left corner of the maze has row index 0 and column index 0.
 	 * @throws IndexOutOfBoundsException if the given rowIndex is less than zero or not less then the width of this MazeMap object
-	 * 		| rowIndex < 0 || rowIndex > getWidth() //! ik denk strict kleiner omdat (0,0) nog bij de map hoort? 
+	 * 		| rowIndex < 0 || rowIndex > getWidth() 
 	 * @throws IndexOutOfBoundsException if the given columnIndex is less than zero or not less then the width of this MazeMap object
 	 *		| columnIndex < 0 || columnIndex > getHeight() 
 	 * @post   | result == true || result == false
@@ -52,14 +58,13 @@ public class MazeMap {
 	}
 	
 	/**
-	 * //Defensief te werk gaan voor ongeldige argumenten constructor 
 	 * Initializes this object so that it represents a maze layout with the given width, height, and
 	 * passable positions. The passable positions are given in row-major order (i.e. the first {@code width} elements
 	 * of {@code passable} specify the passability of the maze positions in the first row of the maze). 
 	 * @throws IllegalArgumentException if the given width is smaller than one.
-	 * 		| width <= 0 //strict kleiner mss? !// denk het niet omdat dit echt het aantal is? kunnen het later nog aanpassen
+	 * 		| width <= 0 
 	 * @throws IllegalArgumentException if the given height is smaller than one.
-	 * 		| height <= 0 //strict kleiner mss?
+	 * 		| height <= 0 
 	 * @throws IllegalArgumentException if passable is null.
 	 * 		| passable == null 
 	 * @throws IllegalArgumentexception if the length of passable is not equal to the product of the given width and the given height.
