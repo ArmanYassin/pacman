@@ -22,8 +22,9 @@ class PacManTest {
 		pacman.setSquare(square10);
 		assertEquals(square10, pacman.getSquare());
 		pacman.die();
-		assertEquals(2, pacman.getNbLives());
-		
+		pacman.die();
+		assertEquals(1, pacman.getNbLives()); 
+		 
 	
 	}
 

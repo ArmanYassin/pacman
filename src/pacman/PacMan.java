@@ -2,6 +2,8 @@ package pacman;
 import pacman.MazeMap;
 import pacman.Square;
 import pacman.Dot;
+import pacman.Ghost;
+import pacman.Direction;
 /**
  * Each instance of this class represents the player-controlled Pac-Man character in a Pac-Man maze.
  * @invar | 0 <= getNbLives() && getNbLives()<4
@@ -10,7 +12,7 @@ import pacman.Dot;
 public class PacMan {
 	 
 	/**
-	 * @invar | 0 <= lives && lives <4
+	 * @invar | 0 <= lives && lives <4 
 	 * @invar | square != null
 	 * 
 	 * @representationObject

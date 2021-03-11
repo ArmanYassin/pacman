@@ -7,6 +7,7 @@ import pacman.MazeMap;
 import pacman.Square;
 import pacman.Dot;
 import pacman.Direction;
+import pacman.PacMan;
 
 /**
  * Each instance of this class represents a ghost in a Pac-Man maze.

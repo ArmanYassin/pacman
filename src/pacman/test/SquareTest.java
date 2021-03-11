@@ -22,11 +22,12 @@ class SquareTest {
 		assertEquals(0, square01.getRowIndex()); 
 		assertEquals(1, square01.getColumnIndex());
 		assertEquals(true, square01.isPassable());  
-//		//assertEquals(square11, square01.getNeighbor(Direction.UP));
+		//assertEquals(square11, square01.getNeighbor(Direction.UP));
 		assertEquals(2, square00.getNeighbor(Direction.LEFT).getColumnIndex());
-//		//assertEquals(square11.getMazeMap(), square01.getNeighbor(Direction.DOWN).getMazeMap());
-		//assertEquals(0, square01.getNeighbor(Direction.UP).getColumnIndex()); 
-		assertEquals(true, square01.canMove(Direction.UP));
+		assertEquals(square11.getMazeMap(), square01.getNeighbor(Direction.DOWN).getMazeMap());
+		assertEquals(1, square01.getNeighbor(Direction.UP).getColumnIndex()); 
+		assertEquals(0, square12.getNeighbor(Direction.RIGHT).getColumnIndex()); 
+		assertEquals(true, square01.canMove(Direction.UP));  
 		assertEquals(3, square01.getPassableDirectionsExcept(Direction.DOWN).length);
 		assertEquals(true, square11.equals(square11));
 

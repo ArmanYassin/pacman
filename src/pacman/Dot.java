@@ -3,6 +3,8 @@ package pacman;
 import pacman.MazeMap;
 import pacman.Square;
 import pacman.Ghost;
+import pacman.PacMan;
+import pacman.Direction;
 /**
  * Each instance of this class represents a dot (a piece of food for Pac-Man) in a Pac-Man maze.
  * 
