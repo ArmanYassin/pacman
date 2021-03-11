@@ -16,6 +16,8 @@ public class MazeMap {
 	
 	/**
 	 * @representationObject
+	 * @invar | 0 <= getWidth()
+     * @invar | 0 <= getHeight()
 	 */
 	private int width;
 	private int height;
