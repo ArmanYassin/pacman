@@ -18,8 +18,8 @@ class PacManTest {
 		Square square10 = Square.of(mazemap, 1, 0);
 		PacMan pacman = new PacMan(3,square);
 		assertEquals(3, pacman.getNbLives());
-		assertEquals(square, pacman.getSquare());
-		pacman.setSquare(square10);
+		assertEquals(square, pacman.getSquare()); 
+		pacman.setSquare(square10);  
 		assertEquals(square10, pacman.getSquare());
 		pacman.die();
 		pacman.die();

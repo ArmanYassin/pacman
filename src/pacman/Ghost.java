@@ -15,7 +15,7 @@ import pacman.PacMan;
  * @invar 	| getSquare() != null
  * @invar 	| getDirection() != null
  */
-public class Ghost {
+public class Ghost { 
 	 
 	/**
 	 * @invar 	| square != null
@@ -51,7 +51,9 @@ public class Ghost {
 	 * @throws IllegalArgumentException if the given square is null.
 	 *  		| square == null 
 	 * @throws IllegalArgumentException if the given direction is null.
-	 * 	  		| direction == null 
+	 * 	  		| direction == null
+	 * @throws IllegalArgumentException if the given square is not passable.
+	 * 			| square.isPassable() == false
 	 * @post | getSquare() == square
 	 * @post | getDirection() == direction
 	 */
@@ -62,6 +64,10 @@ public class Ghost {
 		if (direction == null) {
 			throw new IllegalArgumentException("direction is null");
 		}
+		if (square.isPassable()==false) {
+			throw new IllegalArgumentException("square is in unpassable position");
+		}
+		
 		this.square = square;
 		this.direction = direction;
 	}
@@ -78,7 +84,7 @@ public class Ghost {
 			throw new IllegalArgumentException("square is null");
 		}
 		this.square = square; 
-	}
+	} 
 	
 	/**
 	 * Sets the direction of the ghost object.

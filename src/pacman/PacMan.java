@@ -45,6 +45,8 @@ public class PacMan {
 	 * 			| nbLives < 0 || nbLives > 3
 	 * @throws IllegalArgumentException if the given square is null.
 	 * 			| square == null 
+	 * @throws IllegalArgumentException if the given square is not passable.
+	 * 			| square.isPassable()==false
 	 * @post	| getNbLives() == nbLives
 	 * @post	| getSquare() == square
 	 */
@@ -53,10 +55,13 @@ public class PacMan {
 			throw new IllegalArgumentException("Negative number of lives");
 		}
 		if (nbLives > 3) {
-			throw new IllegalArgumentException("The number of lives is greater than 3");
+			throw new IllegalArgumentException("The number of lives is higher than 3");
 		}
 		if (square == null) {
 			throw new IllegalArgumentException("square is null");
+		}
+		if (square.isPassable()==false) {
+			throw new IllegalArgumentException("square is in unpassable position");
 		}
 		this.lives = nbLives;
 		this.square = square;

@@ -27,8 +27,8 @@ class SquareTest {
 		assertEquals(square11.getMazeMap(), square01.getNeighbor(Direction.DOWN).getMazeMap());
 		assertEquals(1, square01.getNeighbor(Direction.UP).getColumnIndex()); 
 		assertEquals(0, square12.getNeighbor(Direction.RIGHT).getColumnIndex()); 
-		assertEquals(true, square01.canMove(Direction.UP));  
-		assertEquals(3, square01.getPassableDirectionsExcept(Direction.DOWN).length);
+		assertEquals(false, square01.canMove(Direction.UP));    
+		assertEquals(2, square01.getPassableDirectionsExcept(Direction.DOWN).length);
 		assertEquals(true, square11.equals(square11));
 
 		

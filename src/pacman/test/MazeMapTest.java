@@ -11,10 +11,10 @@ class MazeMapTest {
 	@Test
 	void test() {
 		
-		MazeMap mazemap = new MazeMap(2, 3, new boolean[] {true,true,true,false,true,false});
+		MazeMap mazemap = new MazeMap(2, 3, new boolean[] {true,true,true,false,false,false});
 		assertEquals(2, mazemap.getWidth());
 		assertEquals(3, mazemap.getHeight());
-		assertEquals(false, mazemap.isPassable(1,2)); 
+		assertEquals(false, mazemap.isPassable(1,1)); 
 	}
 
 }

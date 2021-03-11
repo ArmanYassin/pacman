@@ -30,7 +30,7 @@ class GhostTest {
 		ghost.move(random);
 		assertNotNull(ghost.getSquare());
 		assertNotNull(ghost.getDirection());
-		MazeMap mazemap2 = new MazeMap(2,2, new boolean[] {false,false,false,false});
+		MazeMap mazemap2 = new MazeMap(2,2, new boolean[] {true,false,false,false});
 		Square square3 = Square.of(mazemap2, 0, 0);
 		Ghost ghost2 = new Ghost(square3, Direction.UP);
 		assertNotNull(ghost2.chooseNextMoveDirection(random));

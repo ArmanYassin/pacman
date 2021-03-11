@@ -57,7 +57,7 @@ public class MazeMap {
 	public boolean isPassable(int rowIndex, int columnIndex) { 
 		if (rowIndex < 0 || rowIndex > getWidth()) throw new IndexOutOfBoundsException();
 		if (columnIndex < 0 || columnIndex > getHeight()) throw new IndexOutOfBoundsException();
-		return passable[rowIndex * getHeight() + columnIndex];
+		return passable[rowIndex * getWidth() + columnIndex];
 		
 	} 
 	 
@@ -79,7 +79,7 @@ public class MazeMap {
 	 * @post   | getHeight() == height
 	 * @post | IntStream.range(0, getWidth()).allMatch(rowIndex ->
 	 *       |     IntStream.range(0, getHeight()).allMatch(columnIndex ->
-	 *       |         passable[rowIndex * getHeight() + columnIndex] == isPassable(rowIndex,columnIndex)))
+	 *       |         passable[rowIndex * getWidth() + columnIndex] == isPassable(rowIndex,columnIndex)))
 	 *   
 	 *                 
 	 * 
@@ -96,6 +96,6 @@ public class MazeMap {
 		
 		this.width = width;
 		this.height = height; 
-		this.passable = passable.clone(); 
+		this.passable = passable;  
 	}
 }
