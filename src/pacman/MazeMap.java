@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 /**
  * Each instance of this class represents a maze layout, specifying the width and height of the maze
  * and, for each position in the maze, whether it is passable or not.
- * 
+ * @immutable
  * @invar | 0 <= getWidth()
  * @invar | 0 <= getHeight()
  * 
@@ -38,7 +38,7 @@ public class MazeMap {
 	public int getHeight() { 
 		return height;
 	}
-	
+	  
 	/**
 	 * Returns whether the square in this maze at row index {@code row} and column index {@code column} is passable.
 	 * The square in the top-left corner of the maze has row index 0 and column index 0.
@@ -57,7 +57,7 @@ public class MazeMap {
 	public boolean isPassable(int rowIndex, int columnIndex) { 
 		if (rowIndex < 0 || rowIndex > getWidth()) throw new IndexOutOfBoundsException();
 		if (columnIndex < 0 || columnIndex > getHeight()) throw new IndexOutOfBoundsException();
-		return passable.clone()[rowIndex * getHeight() + columnIndex];
+		return passable[rowIndex * getHeight() + columnIndex];
 		
 	} 
 	 
@@ -81,7 +81,7 @@ public class MazeMap {
 	 *       |     IntStream.range(0, getHeight()).allMatch(columnIndex ->
 	 *       |         passable[rowIndex * getHeight() + columnIndex] == isPassable(rowIndex,columnIndex)))
 	 *   
-	 *               
+	 *                 
 	 * 
 	 */
 	public MazeMap(int width, int height, boolean[] passable) {

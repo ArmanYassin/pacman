@@ -3,6 +3,11 @@ package pacman;
 import java.util.Random;
 import java.util.stream.IntStream;
 
+import pacman.MazeMap;
+import pacman.Square;
+import pacman.Dot;
+import pacman.Direction;
+
 /**
  * Each instance of this class represents a ghost in a Pac-Man maze.
  * 
@@ -86,7 +91,7 @@ public class Ghost {
 		}
 		this.direction = direction; 
 	}
-	
+	  
 	private static int MOVE_FORWARD_PREFERENCE = 10;
 	
 	// No formal document required

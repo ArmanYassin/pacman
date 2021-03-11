@@ -14,9 +14,9 @@ class GhostTest {
 
 	@Test
 	void test() {
-		MazeMap mazemap = new MazeMap(2, 2, new boolean[] {true,true,true,false});
+		MazeMap mazemap = new MazeMap(2, 2, new boolean[] {true,true,true,false}); 
 		Direction direction = Direction.DOWN;
-		Square square = Square.of(mazemap, 0, 1);
+		Square square = Square.of(mazemap, 0, 1); 
 		Square square2 = Square.of(mazemap, 0, 0);				
 		Ghost ghost = new Ghost(square, direction);
 		assertEquals(Direction.DOWN, ghost.getDirection());

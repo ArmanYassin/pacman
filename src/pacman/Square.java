@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import pacman.MazeMap;
+import pacman.Direction;
+
 
 /**
  * Each instance of this class represents a position in a maze, specified by a row index and a column index.
@@ -69,7 +71,7 @@ public class Square {
 	 * Normaal geen formele documentatie nodig
 	 * @post | getMazeMap() == mazeMap
 	 * @post | getRowIndex() == rowIndex
-	 * @post | getColumnIndex() == columnIndex
+	 * @post | getColumnIndex() == columnIndex 
 	 * 
 	 */
 	
@@ -99,26 +101,28 @@ public class Square {
 		if (mazeMap == null)
 			throw new IllegalArgumentException("mazeMap is null");
 		return new Square(mazeMap,rowIndex,columnIndex);
-	}
+		
+	
+	} 
 	 
-	/** 
+	/**  
 	 * Returns this square's neighbor in the given direction.
 	 * If this square has no neigbor in the given direction, return the square that is furthest away in the opposite direction.
 	 */
 	// No formal documentation required
 	public Square getNeighbor(Direction direction) {
 		// Implementation hint: use method java.lang.Math.floorMod.
-		Square current = this;
+		//Square current = this;
 		//Square neighbor = new Square();
 
 		if(direction == Direction.DOWN )
-			return of(this.mazeMap, Math.floorMod(this.rowIndex+1,this.mazeMap.getHeight()), this.columnIndex);
+			return of(mazeMap, Math.floorMod(rowIndex+1,mazeMap.getWidth()), columnIndex);
 		if(direction == Direction.UP)
-			return of(this.mazeMap, Math.floorMod(this.rowIndex-1,this.mazeMap.getHeight()), this.columnIndex);
+			return of(this.mazeMap, Math.floorMod(rowIndex-1,mazeMap.getWidth()), columnIndex);
 		if(direction == Direction.LEFT)
-			return of(this.mazeMap, this.rowIndex, Math.floorMod(this.columnIndex-1,this.mazeMap.getWidth()));
+			return of(mazeMap, rowIndex, Math.floorMod(columnIndex-1,mazeMap.getHeight()));
 		if(direction == Direction.RIGHT)
-			return of(this.mazeMap, this.rowIndex, Math.floorMod(this.columnIndex+1,this.mazeMap.getWidth()));
+			return of(mazeMap, rowIndex, Math.floorMod(columnIndex+1,mazeMap.getHeight()));
 		
 		return null;
 		
@@ -154,7 +158,7 @@ public class Square {
             possibleDirection[k++] = allDirections[i]; 
         }
 		
-		int count = 0; Direction val;
+		int count = 0;  
 		for(int i = 0; i<possibleDirection.length; i++) {
 			if(canMove(possibleDirection[i])) {
 				count++; 						
@@ -196,6 +200,15 @@ public class Square {
 		return this == other;
 
 	}
-	
+	public static void main(String[] args) {
+		MazeMap mazemap = new MazeMap(2, 3, new boolean[] {true,true,true,false,false,false});
+		Square square01 = Square.of(mazemap, 0, 1);  
+		Square square11 = Square.of(mazemap, 1, 1);  
+		Square square00 = Square.of(mazemap, 0, 0);
+		Square square10 = Square.of(mazemap, 1, 0);
+		Square square02 = Square.of(mazemap, 0, 2);
+		Square square12 = Square.of(mazemap, 1, 2);
+		System.out.println(square10.getPassableDirectionsExcept(Direction.DOWN));
+	}
 
 }

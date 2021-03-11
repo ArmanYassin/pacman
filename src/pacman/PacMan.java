@@ -1,5 +1,7 @@
 package pacman;
-
+import pacman.MazeMap;
+import pacman.Square;
+import pacman.Dot;
 /**
  * Each instance of this class represents the player-controlled Pac-Man character in a Pac-Man maze.
  * @invar | 0 <= getNbLives() && getNbLives()<4
@@ -33,7 +35,7 @@ public class PacMan {
 	public int getNbLives() { 
 		return lives; 
 	}
- 
+    
 	/**
 	 * Initializes this object so that it represents the player-controlled Pac-Man character in a Pac-Man maze with a given 
 	 * current number of lives and a given square.
