@@ -14,8 +14,8 @@ class DotTest {
 		MazeMap mazemap = new MazeMap(2, 2, new boolean[] {true,true,true,false});
 		Square square = Square.of(mazemap, 0, 1);
 		Dot dot = new Dot(square);
-		assertEquals(square, dot.getSquare()); 
+		assertEquals(square, dot.getSquare());  
  
-	}
+	} 
 
 } 

@@ -7,12 +7,12 @@ package pacman;
  */
 public class Dot {
 	/**
-	 * @invar | square != null
+	 * @invar | square != null 
 	 * 
 	 * @representationObject
 	 */
 	private Square square;
-	
+	 
 	 
 	/**
 	 * Returns the square of a dot object.
@@ -20,9 +20,9 @@ public class Dot {
 	 * 
 	 */
 	public Square getSquare() {
-		return square;
+		return square; 
 	} 
-	  
+	   
 	/**
 	 * 
 	 * Initializes this dot object with a given square.

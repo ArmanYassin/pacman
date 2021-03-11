@@ -20,7 +20,7 @@ class GhostTest {
 		Square square2 = Square.of(mazemap, 0, 0);				
 		Ghost ghost = new Ghost(square, direction);
 		assertEquals(Direction.DOWN, ghost.getDirection());
-		ghost.setSquare(square2);
+		ghost.setSquare(square2); 
 		assertEquals(square2, ghost.getSquare());
 		ghost.setDirection(Direction.UP);
 		assertEquals(Direction.UP, ghost.getDirection());

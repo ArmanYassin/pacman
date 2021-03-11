@@ -122,10 +122,10 @@ public class Square {
 		
 		return null;
 		
-		
+		 
 
 	}
-
+ 
 	/**
 	 * Returns whether this square's neighbor in the given direction is passable.
 	 */

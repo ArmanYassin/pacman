@@ -59,8 +59,8 @@ public class MazeMap {
 		if (columnIndex < 0 || columnIndex > getHeight()) throw new IndexOutOfBoundsException();
 		return passable.clone()[rowIndex * getHeight() + columnIndex];
 		
-	}
-	
+	} 
+	 
 	/**
 	 * //Defensief te werk gaan voor ongeldige argumenten constructor 
 	 * Initializes this object so that it represents a maze layout with the given width, height, and

@@ -31,9 +31,9 @@ public class PacMan {
 	 * @basic
 	 */
 	public int getNbLives() { 
-		return lives;
+		return lives; 
 	}
-
+ 
 	/**
 	 * Initializes this object so that it represents the player-controlled Pac-Man character in a Pac-Man maze with a given 
 	 * current number of lives and a given square.

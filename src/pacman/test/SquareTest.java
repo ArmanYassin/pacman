@@ -11,9 +11,9 @@ class SquareTest {
 
 	@Test
 	void test() {
-	
+	 
 		MazeMap mazemap = new MazeMap(2, 2, new boolean[] {true,true,true,false});
-		Square square01 = Square.of(mazemap, 0, 1); 
+		Square square01 = Square.of(mazemap, 0, 1);  
 		Square square11 = Square.of(mazemap, 1, 1); 
 		Square square00 = Square.of(mazemap, 0, 0);
 		Square square10 = Square.of(mazemap, 1, 0);

@@ -3,7 +3,7 @@ package pacman.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import pacman.MazeMap;
-
+   
 import org.junit.jupiter.api.Test;
 
 class MazeMapTest {
