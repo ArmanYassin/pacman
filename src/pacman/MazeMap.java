@@ -14,13 +14,11 @@ import java.util.stream.IntStream;
  */
 public class MazeMap {
 	
-	
-	private int width;
-	private int height;
-	
 	/**
 	 * @representationObject
 	 */
+	private int width;
+	private int height;
 	private boolean [] passable;
 
 	/**
