@@ -91,6 +91,7 @@ public class Ghost {
 	 * 
 	 * @throws IllegalArgumentException if the given direction is null.
 	 * 		| direction == null 
+	 * @mutates | this
 	 */
 	public void setDirection(Direction direction) { 
 		if (direction == null) {

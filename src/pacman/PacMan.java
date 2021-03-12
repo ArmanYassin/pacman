@@ -54,9 +54,6 @@ public class PacMan {
 		if (nbLives < 0) {
 			throw new IllegalArgumentException("Negative number of lives");
 		}
-		if (nbLives > 3) {
-			throw new IllegalArgumentException("The number of lives is higher than 3");
-		}
 		if (square == null) {
 			throw new IllegalArgumentException("square is null");
 		}
