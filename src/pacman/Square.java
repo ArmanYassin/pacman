@@ -67,8 +67,7 @@ public class Square {
 	}
 	
 	/**
-	 * Initialises this object to represent a square in a given location
-	 * Normaal geen formele documentatie nodig
+	 * Initializes this object to represent a square in a given location
 	 * @post | getMazeMap() == mazeMap
 	 * @post | getRowIndex() == rowIndex
 	 * @post | getColumnIndex() == columnIndex 
@@ -107,22 +106,19 @@ public class Square {
 	 
 	/**  
 	 * Returns this square's neighbor in the given direction.
-	 * If this square has no neigbor in the given direction, return the square that is furthest away in the opposite direction.
+	 * If this square has no neighbor in the given direction, return the square that is furthest away in the opposite direction.
 	 */
 	// No formal documentation required
 	public Square getNeighbor(Direction direction) {
-		// Implementation hint: use method java.lang.Math.floorMod.
-		//Square current = this;
-		//Square neighbor = new Square();
-
+		
 		if(direction == Direction.DOWN )
-			return of(mazeMap, Math.floorMod(rowIndex+1,mazeMap.getWidth()), columnIndex);
+			return of(mazeMap, Math.floorMod(rowIndex+1,mazeMap.getHeight()), columnIndex);
 		if(direction == Direction.UP)
-			return of(this.mazeMap, Math.floorMod(rowIndex-1,mazeMap.getWidth()), columnIndex);
+			return of(this.mazeMap, Math.floorMod(rowIndex-1,mazeMap.getHeight()), columnIndex);
 		if(direction == Direction.LEFT)
-			return of(mazeMap, rowIndex, Math.floorMod(columnIndex-1,mazeMap.getHeight()));
+			return of(mazeMap, rowIndex, Math.floorMod(columnIndex-1,mazeMap.getWidth()));
 		if(direction == Direction.RIGHT)
-			return of(mazeMap, rowIndex, Math.floorMod(columnIndex+1,mazeMap.getHeight()));
+			return of(mazeMap, rowIndex, Math.floorMod(columnIndex+1,mazeMap.getWidth()));
 		
 		return null;
 		
