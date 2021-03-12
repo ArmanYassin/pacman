@@ -29,7 +29,12 @@ class SquareTest {
 		assertEquals(1, square21.getNeighbor(Direction.UP).getColumnIndex()); 
 		assertEquals(false, square01.canMove(Direction.UP));    
 		assertEquals(2, square01.getPassableDirectionsExcept(Direction.DOWN).length);
-		assertEquals(true, square11.equals(square11));		
+		assertEquals(true, square11.equals(square11));	
+		assertEquals(true, square21.canMove(Direction.LEFT));
+		assertEquals(true, square21.canMove(Direction.RIGHT));   
+		assertEquals(3, square00.getPassableDirectionsExcept(Direction.DOWN).length);
+		assertEquals(1, square10.getPassableDirectionsExcept(Direction.UP).length);
+		assertEquals(1, square20.getPassableDirectionsExcept(Direction.DOWN).length);
 	} 
 
 }
