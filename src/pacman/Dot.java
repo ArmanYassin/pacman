@@ -37,6 +37,9 @@ public class Dot {
 	 */
 	 
 	public Dot(Square square) { 
+		if (square == null) {
+			throw new IllegalArgumentException("square is null");
+		}
 		this.square = square;
 	}
  

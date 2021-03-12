@@ -82,12 +82,12 @@ public class Square {
 	
 	/**
 	 * Returns a square object with the given location 
+	 * @throws IllegalArgumentException if MazeMap is null.
+	 * 		| mazeMap == null 
 	 * @throws IndexOutOfBoundsException if the given rowIndex is less than zero or not less then the width of this MazeMap object
 	 * 		| rowIndex < 0 || rowIndex > mazeMap.getWidth()  
 	 * @throws IndexOutOfBoundsException if the given columnIndex is less than zero or not less then the width of this MazeMap object
 	 *		| columnIndex < 0 || columnIndex > mazeMap.getHeight()
-	 * @throws IllegalArgumentException if MazeMap is null.
-	 * 		| mazeMap == null 
 	 * @post | result != null
 	 * @post | result.getMazeMap() == mazeMap
 	 * @post | result.getRowIndex() == rowIndex
@@ -95,10 +95,9 @@ public class Square {
 	 * 
 	 */
 	public static Square of(MazeMap mazeMap, int rowIndex, int columnIndex) {
+		if (mazeMap == null) throw new IllegalArgumentException("mazeMap is null");
 		if (rowIndex < 0 || rowIndex > mazeMap.getWidth()) throw new IndexOutOfBoundsException();
 		if (columnIndex < 0 || columnIndex > mazeMap.getHeight()) throw new IndexOutOfBoundsException();
-		if (mazeMap == null)
-			throw new IllegalArgumentException("mazeMap is null");
 		return new Square(mazeMap,rowIndex,columnIndex);
 		
 	
@@ -167,15 +166,6 @@ public class Square {
 			}
 			passableDirection[k++] = possibleDirection[i];
 		}
-		
-
-	
-	
-
-		
-		
-
-			
 			
 		return passableDirection;
 
@@ -186,25 +176,18 @@ public class Square {
 	 * @inspects | this, other
 	 * @throws IllegalArgumentException if the given square is null.
 	 * 		 | other == null 
-	 * @post | result ==(this==other)
-	 * 
+	 * @post | this.getRowIndex() == other.getRowIndex()
+	 * @post | this.getColumnIndex() == other.getColumnIndex()
+	 * @post | this.getMazeMap() == other.getMazeMap()
 	 */
 	
 	public boolean equals(Square other) {
 		if (other == null)
 			throw new IllegalArgumentException("Given square is null");
-		return this == other;
-
+		return this.rowIndex == other.rowIndex 
+			&& this.columnIndex == other.columnIndex 
+			&& this.mazeMap == other.mazeMap;
 	}
-	public static void main(String[] args) {
-		MazeMap mazemap = new MazeMap(2, 3, new boolean[] {true,true,true,false,false,false});
-		Square square01 = Square.of(mazemap, 0, 1);  
-		Square square11 = Square.of(mazemap, 1, 1);  
-		Square square00 = Square.of(mazemap, 0, 0);
-		Square square10 = Square.of(mazemap, 1, 0);
-		Square square02 = Square.of(mazemap, 0, 2);
-		Square square12 = Square.of(mazemap, 1, 2);
-		System.out.println(square10.getPassableDirectionsExcept(Direction.DOWN));
-	}
+	
 
 }

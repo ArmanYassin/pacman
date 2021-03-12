@@ -23,6 +23,9 @@ class DotTest {
 		assertEquals(dot.getSquare().getNeighbor(Direction.LEFT).isPassable(), false);
 		assertEquals(dot.getSquare().getNeighbor(Direction.DOWN).isPassable(), true);
 		assertEquals(dot.getSquare().getNeighbor(Direction.RIGHT).isPassable(), false);
+		assertEquals(dot.getSquare().getMazeMap().getHeight(), 3);
+		assertEquals(dot.getSquare().getMazeMap().getWidth(), 2);
+		assertEquals(dot.getSquare().getMazeMap(), dot.getSquare().getNeighbor(Direction.UP).getMazeMap());
 
 
 	} 

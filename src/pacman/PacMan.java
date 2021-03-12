@@ -6,13 +6,13 @@ import pacman.Ghost;
 import pacman.Direction;
 /**
  * Each instance of this class represents the player-controlled Pac-Man character in a Pac-Man maze.
- * @invar | 0 <= getNbLives() && getNbLives()<4
+ * @invar | 0 <= getNbLives()
  * @invar | getSquare() != null 
  */
 public class PacMan {
 	 
 	/**
-	 * @invar | 0 <= lives && lives <4 
+	 * @invar | 0 <= lives
 	 * @invar | square != null
 	 * 
 	 * @representationObject
@@ -41,12 +41,12 @@ public class PacMan {
 	/**
 	 * Initializes this object so that it represents the player-controlled Pac-Man character in a Pac-Man maze with a given 
 	 * current number of lives and a given square.
-	 * @throws IllegalArgumentException if the given number of lives is negative or higher than 3.
-	 * 			| nbLives < 0 || nbLives > 3
+	 * @throws IllegalArgumentException if the given number of lives is negative.
+	 * 			| nbLives < 0
 	 * @throws IllegalArgumentException if the given square is null.
 	 * 			| square == null 
 	 * @throws IllegalArgumentException if the given square is not passable.
-	 * 			| square.isPassable()==false
+	 * 			| square.isPassable() == false
 	 * @post	| getNbLives() == nbLives
 	 * @post	| getSquare() == square
 	 */
@@ -72,7 +72,7 @@ public class PacMan {
 	 * 
 	 * @throws IllegalArgumentException if the given square is null.
 	 * 			| square == null 
-	 * @mutates 
+	 * @mutates | this
 	 */
 	public void setSquare(Square square) { 
 		if (square == null) {
@@ -85,6 +85,7 @@ public class PacMan {
 	 * Decreases this Pac-Man character's number of lives by one.
 	 * 
 	 * @post	| getNbLives() == old(getNbLives()) - 1
+	 * @mutates | this
 	 */
 	public void die() {
 		this.lives--;

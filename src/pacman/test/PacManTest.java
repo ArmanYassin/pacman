@@ -11,10 +11,8 @@ class PacManTest {
 
 	@Test
 	void test() {
-		MazeMap mazemap = new MazeMap(2, 2, new boolean[] {true,true,true,false});
+		MazeMap mazemap = new MazeMap(3, 2, new boolean[] {true,true,true,false,false,true});
 		Square square = Square.of(mazemap, 0, 1);
-		Square square2 = Square.of(mazemap, 1, 1);
-		Square square00 = Square.of(mazemap, 0, 0);
 		Square square10 = Square.of(mazemap, 1, 0);
 		PacMan pacman = new PacMan(3,square);
 		assertEquals(3, pacman.getNbLives());
