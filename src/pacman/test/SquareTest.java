@@ -13,12 +13,12 @@ class SquareTest {
 	void test() {
 	 
 		MazeMap mazemap = new MazeMap(2, 3, new boolean[] {true,true,true,false,true,false});
-		Square square01 = Square.of(mazemap, 0, 1);  
-		Square square11 = Square.of(mazemap, 1, 1);  
 		Square square00 = Square.of(mazemap, 0, 0);  
-		Square square10 = Square.of(mazemap, 1, 0);
-		Square square02 = Square.of(mazemap, 0, 2);
-		Square square12 = Square.of(mazemap, 1, 2);
+		Square square01 = Square.of(mazemap, 0, 1);  
+		Square square10 = Square.of(mazemap, 1, 0);  
+		Square square11 = Square.of(mazemap, 1, 1);
+		Square square20 = Square.of(mazemap, 2, 0);
+		Square square21 = Square.of(mazemap, 2, 1);
 		assertEquals(0, square01.getRowIndex()); 
 		assertEquals(1, square01.getColumnIndex());
 		assertEquals(true, square01.isPassable());  
@@ -26,7 +26,7 @@ class SquareTest {
 		assertEquals(1, square00.getNeighbor(Direction.LEFT).getColumnIndex());
 		assertEquals(square11.getMazeMap(), square01.getNeighbor(Direction.DOWN).getMazeMap());
 		assertEquals(1, square01.getNeighbor(Direction.UP).getColumnIndex()); 
-		assertEquals(1, square12.getNeighbor(Direction.RIGHT).getColumnIndex()); 
+		assertEquals(1, square21.getNeighbor(Direction.UP).getColumnIndex()); 
 		assertEquals(false, square01.canMove(Direction.UP));    
 		assertEquals(2, square01.getPassableDirectionsExcept(Direction.DOWN).length);
 		assertEquals(true, square11.equals(square11));		
