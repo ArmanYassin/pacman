@@ -17,6 +17,7 @@ public class Ghost {
 	 */
 	private Square square;
 	private Direction direction;
+	private GhostState state;
 
 	/**
 	 * @basic
@@ -47,6 +48,7 @@ public class Ghost {
 		
 		this.square = square;
 		this.direction = direction;
+		this.state = state;
 	}
 	
 	/**
@@ -102,4 +104,15 @@ public class Ghost {
 		setDirection(chooseNextMoveDirection(random));
 		setSquare(getSquare().getNeighbor(getDirection()));
 	}
+	
+	public boolean isVulnerable() {
+		return false;
+	}
+	public void hitBy(PacMan pacMan) {
+		
+	}
+	public void pacManAtePowerPellet() {
+		
+	}
+	
 }

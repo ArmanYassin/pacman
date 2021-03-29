@@ -1,5 +1,7 @@
 package pacman;
 
-public class RegularGhostState {
+public class RegularGhostState extends GhostState {
+	
+	
 
 }

@@ -1,5 +1,5 @@
 package pacman;
 
-public class VulnerableGhostState {
+public class VulnerableGhostState extends GhostState{
 
 }
