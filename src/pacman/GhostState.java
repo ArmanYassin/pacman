@@ -10,7 +10,8 @@ public abstract class GhostState {
 	
 	
 	public GhostState move(Ghost ghost, Random random) {
-		return null;
+		//if(ghost.getGhostState() instanceof VulnerableGhostState)
+		return state;
 	}
 	public GhostState hitBy(Ghost ghost, PacMan pacMan) {
 		if(ghost.getSquare().equals(pacMan.getSquare())
@@ -18,7 +19,7 @@ public abstract class GhostState {
 			return state; 
 		return state;
 	}
-	
+
 	public abstract GhostState getState();
 
 }

@@ -29,6 +29,8 @@ public class Ghost {
 	 */
 	public Direction getDirection() { return direction; }
 	
+	public GhostState getGhostState() { return state; }
+	
 	/**
 	 * Initializes this object so that its initial position is the
 	 * given position and its initial direction is the given
@@ -48,7 +50,7 @@ public class Ghost {
 		
 		this.square = square;
 		this.direction = direction;
-		this.state = (RegularGhostState)state;
+		this.state = new RegularGhostState();
 		
 	}
 	
@@ -85,6 +87,12 @@ public class Ghost {
 
 		this.direction = direction;
 	}
+	public void setState(GhostState state) {
+		if (state == null)
+			throw new IllegalArgumentException("`state` is null");
+
+		this.state = state;
+	}
 	
 	private static int MOVE_FORWARD_PREFERENCE = 10;
 	
@@ -107,24 +115,22 @@ public class Ghost {
 	}
 	
 	public void move(Random random) {
-		move(this,random);
+		setState(state.move(this,random));
 	}
-	public void move(Ghost ghost, Random random) {
-		
-	}
+	
 	
 	public boolean isVulnerable() {
 		return this.state instanceof VulnerableGhostState;
 	}
 	public void hitBy(PacMan pacMan) {
-		hitBy(this,pacMan);
+		state.hitBy(this, pacMan);
 	}
 	
-	public void hitBy(Ghost ghost, PacMan pacMan) {
-		
-	}
+	
 	public void pacManAtePowerPellet() {
-		this.state = (VulnerableGhostState)state;
+		//hoe naar vulnerable omzetten 
+		this.state = new VulnerableGhostState();
+		this.setDirection(getDirection().getOpposite());
 	}
 	
 }
