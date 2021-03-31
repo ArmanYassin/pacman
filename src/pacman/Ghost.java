@@ -48,6 +48,7 @@ public class Ghost {
 		
 		this.square = square;
 		this.direction = direction;
+		this.state = (RegularGhostState)state;
 		
 	}
 	
@@ -116,10 +117,14 @@ public class Ghost {
 		return this.state instanceof VulnerableGhostState;
 	}
 	public void hitBy(PacMan pacMan) {
+		hitBy(this,pacMan);
+	}
+	
+	public void hitBy(Ghost ghost, PacMan pacMan) {
 		
 	}
 	public void pacManAtePowerPellet() {
-		
+		this.state = (VulnerableGhostState)state;
 	}
 	
 }
