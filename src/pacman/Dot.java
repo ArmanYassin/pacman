@@ -34,7 +34,8 @@ public class Dot extends FoodItem {
 	 * @post | result == 1
 	 */
 	public int getSize() {
-		return size;
+		
+		return size;	
 	}
 
 }

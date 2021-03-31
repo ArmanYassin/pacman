@@ -7,7 +7,7 @@ public class Maze {
 	
 	private Random random;
 	private MazeMap map;
-	private PacMan pacMan;
+	private PacMan pacMan; 
 	private Ghost[] ghosts;
 	//private Dot[] dots;
 	private FoodItem[] fooditems;

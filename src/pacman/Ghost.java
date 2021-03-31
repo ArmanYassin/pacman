@@ -48,7 +48,7 @@ public class Ghost {
 		
 		this.square = square;
 		this.direction = direction;
-		this.state = state;
+		
 	}
 	
 	/**
@@ -100,13 +100,20 @@ public class Ghost {
 	}
 	
 	// No formal documentation required.
-	public void move(Random random) {
+	public void reallyMove(Random random) {
 		setDirection(chooseNextMoveDirection(random));
 		setSquare(getSquare().getNeighbor(getDirection()));
 	}
 	
+	public void move(Random random) {
+		move(this,random);
+	}
+	public void move(Ghost ghost, Random random) {
+		
+	}
+	
 	public boolean isVulnerable() {
-		return false;
+		return this.state instanceof VulnerableGhostState;
 	}
 	public void hitBy(PacMan pacMan) {
 		

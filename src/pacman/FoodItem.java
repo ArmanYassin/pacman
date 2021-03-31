@@ -4,6 +4,7 @@ public abstract class FoodItem {
 	protected Square square;
 	
 	FoodItem food;
+	int size;
 	public Square getSquare() { return square; }
 	/**
 	 * 
