@@ -18,6 +18,7 @@ public class Ghost {
 	private Square square;
 	private Direction direction;
 	private GhostState state;
+	int delay;
 
 	/**
 	 * @basic
@@ -93,6 +94,18 @@ public class Ghost {
 
 		this.state = state;
 	}
+	public void setRegularState() {
+		if (state == null)
+			throw new IllegalArgumentException("`state` is null");
+
+		this.state = new RegularGhostState();
+	}
+	public void setVulnerableState() {
+		if (state == null)
+			throw new IllegalArgumentException("`state` is null");
+
+		this.state = new VulnerableGhostState();
+	}
 	
 	private static int MOVE_FORWARD_PREFERENCE = 10;
 	
@@ -126,10 +139,10 @@ public class Ghost {
 		state.hitBy(this, pacMan);
 	}
 	
-	
+	// Na implementatie Maze aanpassen zoals in opgave
 	public void pacManAtePowerPellet() {
 		//hoe naar vulnerable omzetten 
-		this.state = new VulnerableGhostState();
+		this.setVulnerableState();
 		this.setDirection(getDirection().getOpposite());
 	}
 	
