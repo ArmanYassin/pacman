@@ -80,6 +80,10 @@ public class Maze {
 		Square newSquare = pacMan.getSquare().getNeighbor(direction);
 		if (newSquare.isPassable()) {
 			pacMan.setSquare(newSquare);
+			if(fooditems[newSquare.getRowIndex()*map.getWidth()+newSquare.getColumnIndex()] instanceof PowerPellet) {
+				for (Ghost ghost : ghosts)
+					ghost.pacManAtePowerPellet();
+				}
 			removeFoodItemAtSquare(newSquare);
 			checkPacManDamage();
 		}
