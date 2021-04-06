@@ -6,6 +6,7 @@ public abstract class FoodItem {
 	FoodItem food;
 	int size;
 	public Square getSquare() { return square; }
+	//public FoodItem(Square square) {this.square = square;}
 	/**
 	 * 
 	 * @post | result > 0

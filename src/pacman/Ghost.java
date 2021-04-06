@@ -15,6 +15,7 @@ public class Ghost {
 	 * @invar | square != null
 	 * @invar | direction != null
 	 */
+	private Square OriginalSquare;//Toegevoegd 06/04
 	private Square square;
 	private Direction direction;
 	private GhostState state;
@@ -24,7 +25,11 @@ public class Ghost {
 	 * @basic
 	 */
 	public Square getSquare() { return square; }
-
+	
+	/*
+	 * Toegevoegd 06/04
+	 */
+	public Square getOriginalSquare() { return OriginalSquare; }
 	/**
 	 * @basic
 	 */
@@ -49,7 +54,7 @@ public class Ghost {
 		if (direction == null)
 			throw new IllegalArgumentException("`direction` is null");
 		
-		this.square = square;
+		this.OriginalSquare = square; //aangepast 06/04
 		this.direction = direction;
 		this.state = new RegularGhostState();
 		
@@ -71,6 +76,7 @@ public class Ghost {
 		
 		this.square = square;
 	}
+	
 	
 	/**
 	 * Sets this ghost's direction.
@@ -135,8 +141,9 @@ public class Ghost {
 	public boolean isVulnerable() {
 		return this.state instanceof VulnerableGhostState;
 	}
+	
 	public void hitBy(PacMan pacMan) {
-		state.hitBy(this, pacMan);
+		this.state.hitBy(this, pacMan);
 	}
 	
 	// Na implementatie Maze aanpassen zoals in opgave

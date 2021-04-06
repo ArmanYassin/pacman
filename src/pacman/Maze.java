@@ -39,7 +39,8 @@ public class Maze {
 	private void checkPacManDamage() {
 		for (Ghost ghost : ghosts)
 			if (ghost.getSquare().equals(pacMan.getSquare()))
-				pacMan.die();
+				ghost.hitBy(pacMan); //aangepast
+				//pacMan.die();
 	}
 	
 	public void moveGhosts() {

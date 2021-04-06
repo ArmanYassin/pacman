@@ -16,24 +16,35 @@ public abstract class GhostState {
 			ghost.reallyMove(random);
 			return ghost.getGhostState();
 			}
-		else 
+		else {
 			delay = 1;
 			if(delay==0) {
 				ghost.reallyMove(random);
 				totalMoves--;
 				}
 			else delay--;
+			}
 		
 		if(totalMoves == 0)
 			ghost.setRegularState();
 		return ghost.getGhostState(); 	
 	}
+	/*
+	 * Aangepast 06/04
+	 */
 	public GhostState hitBy(Ghost ghost, PacMan pacMan) {
-		if(ghost.getSquare().equals(pacMan.getSquare())
-				 /*&& state*/ )
+		if(!ghost.isVulnerable()) {
+			pacMan.die();
+			return ghost.getGhostState();
+		}
+		else {
 			
-			return state; 
-		return state;
+			ghost.setSquare(ghost.getOriginalSquare());
+			ghost.setRegularState();
+		}
+			
+		
+		return ghost.getGhostState();
 	}
 
 	public abstract GhostState getState();

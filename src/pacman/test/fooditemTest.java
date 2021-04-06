@@ -10,8 +10,8 @@ class fooditemTest {
 
 	@Test
 	void test() {
-		FoodItem[] foodItems = new FoodItem[5];
-		assertEquals(foodItems.length, 5);
+		FoodItem[] foodItems = new FoodItem[12];
+		assertEquals(foodItems.length, 9);
 	
 	}
 }
