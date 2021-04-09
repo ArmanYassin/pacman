@@ -39,7 +39,8 @@ public class Maze {
 	private void checkPacManDamage() {
 		for (Ghost ghost : ghosts)
 			if (ghost.getSquare().equals(pacMan.getSquare()))
-				pacMan.die();
+//				pacMan.die();
+				ghost.hitBy(pacMan);
 	}
 	
 	public void moveGhosts() {
@@ -76,14 +77,28 @@ public class Maze {
 		}
 	}
 	
+	//bug where pacman doesn't consistently eat food fixed
 	public void movePacMan(Direction direction) {
 		Square newSquare = pacMan.getSquare().getNeighbor(direction);
 		if (newSquare.isPassable()) {
 			pacMan.setSquare(newSquare);
-			if(fooditems[newSquare.getRowIndex()*map.getWidth()+newSquare.getColumnIndex()] instanceof PowerPellet) {
-				for (Ghost ghost : ghosts)
-					ghost.pacManAtePowerPellet();
+			
+			for (int i = 0; i < fooditems.length; i++) {
+				if (fooditems[i].getSquare().equals(newSquare)) {
+					FoodItem foodItemAtSquare = fooditems[i];
+					if (foodItemAtSquare instanceof PowerPellet) {
+						for (Ghost ghost : ghosts)
+							ghost.pacManAtePowerPellet();
+					}
 				}
+			}
+					
+					
+//			if(fooditems[newSquare.getRowIndex()*map.getWidth()+newSquare.getColumnIndex()] instanceof PowerPellet) {
+//				for (Ghost ghost : ghosts)
+//					ghost.pacManAtePowerPellet();
+//				}
+					
 			removeFoodItemAtSquare(newSquare);
 			checkPacManDamage();
 		}

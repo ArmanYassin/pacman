@@ -16,8 +16,10 @@ public class Ghost {
 	 * @invar | direction != null
 	 */
 	private Square square;
+	// made final 
+	final Square originalSquare;
 	private Direction direction;
-	private GhostState state;
+	public GhostState state;
 	int delay;
 
 	/**
@@ -25,6 +27,8 @@ public class Ghost {
 	 */
 	public Square getSquare() { return square; }
 
+//	public Square getOriginalSquare() { return originalSquare; }
+	
 	/**
 	 * @basic
 	 */
@@ -50,6 +54,8 @@ public class Ghost {
 			throw new IllegalArgumentException("`direction` is null");
 		
 		this.square = square;
+		//added to constructor
+		this.originalSquare = square;
 		this.direction = direction;
 		this.state = new RegularGhostState();
 		
@@ -70,6 +76,11 @@ public class Ghost {
 			throw new IllegalArgumentException("`square` is null");
 		
 		this.square = square;
+	}
+	
+	//returns the ghost to the original square
+	public void setOriginalSquare() {
+		this.square = originalSquare;
 	}
 	
 	/**
@@ -127,8 +138,10 @@ public class Ghost {
 		setSquare(getSquare().getNeighbor(getDirection()));
 	}
 	
+	
 	public void move(Random random) {
 		setState(state.move(this,random));
+//		state.move(this,random);
 	}
 	
 	
@@ -136,12 +149,10 @@ public class Ghost {
 		return this.state instanceof VulnerableGhostState;
 	}
 	public void hitBy(PacMan pacMan) {
-		state.hitBy(this, pacMan);
+		state = state.hitBy(this, pacMan);
 	}
 	
-	// Na implementatie Maze aanpassen zoals in opgave
 	public void pacManAtePowerPellet() {
-		//hoe naar vulnerable omzetten 
 		this.setVulnerableState();
 		this.setDirection(getDirection().getOpposite());
 	}

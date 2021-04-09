@@ -14,22 +14,21 @@ public class Dot extends FoodItem {
 	 * @invar | square != null
 	 */
 	
-	/**
-	 * @basic
-	 */
 	
+	final int size = 1;
+
 	/**
 	 * @throws IllegalArgumentException | square == null
 	 * 
 	 * @post | getSquare() == square
-	 */
-	int size =1;
+	 */	
 	public Dot(Square square) {
 		if (square == null)
 			throw new IllegalArgumentException("`square` is null");
 		
 		this.square = square;
 	}
+	
 	/**
 	 * @post | result == 1
 	 */
@@ -37,5 +36,4 @@ public class Dot extends FoodItem {
 		
 		return size;	
 	}
-
 }
