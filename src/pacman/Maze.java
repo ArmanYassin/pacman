@@ -93,7 +93,7 @@ public class Maze {
 				}
 			}
 					
-					
+	//				
 //			if(fooditems[newSquare.getRowIndex()*map.getWidth()+newSquare.getColumnIndex()] instanceof PowerPellet) {
 //				for (Ghost ghost : ghosts)
 //					ghost.pacManAtePowerPellet();
