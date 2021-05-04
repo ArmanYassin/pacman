@@ -1,9 +1,5 @@
 package pacman;
 
-import java.util.stream.IntStream;
-
-
-
 public enum Direction {
 	RIGHT, DOWN, LEFT, UP;
 	
@@ -15,6 +11,4 @@ public enum Direction {
 		case DOWN -> UP;
 		};
 	}
-
-	
 }

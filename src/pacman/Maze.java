@@ -7,10 +7,9 @@ public class Maze {
 	
 	private Random random;
 	private MazeMap map;
-	private PacMan pacMan; 
+	private PacMan pacMan;
 	private Ghost[] ghosts;
-	//private Dot[] dots;
-	private FoodItem[] fooditems;
+	private FoodItem[] foodItems;
 	
 	public MazeMap getMap() { return map; }
 	
@@ -18,29 +17,24 @@ public class Maze {
 	
 	public Ghost[] getGhosts() { return ghosts.clone(); }
 	
-	//public Dot[] getDots() { return dots.clone(); }
-	public FoodItem[] getFoodItems() { return fooditems.clone(); }
+	public FoodItem[] getFoodItems() { return foodItems.clone(); }
 	
-	public Maze(Random random, MazeMap map, PacMan pacMan, Ghost[] ghosts, FoodItem[] fooditems) {
+	public Maze(Random random, MazeMap map, PacMan pacMan, Ghost[] ghosts, FoodItem[] foodItems) {
 		this.random = random;
 		this.map = map;
 		this.pacMan = pacMan;
 		this.ghosts = ghosts.clone();
-		//this.dots = dots.clone();
-		this.fooditems = fooditems.clone();
+		this.foodItems = foodItems.clone();
 	}
 	
 	public boolean isCompleted() {
-		//return dots.length == 0;
-		return fooditems.length == 0;
-
+		return foodItems.length == 0;
 	}
 	
 	private void checkPacManDamage() {
 		for (Ghost ghost : ghosts)
 			if (ghost.getSquare().equals(pacMan.getSquare()))
-				ghost.hitBy(pacMan); //aangepast
-				//pacMan.die();
+				ghost.hitBy(pacMan);
 	}
 	
 	public void moveGhosts() {
@@ -49,29 +43,23 @@ public class Maze {
 		checkPacManDamage();
 	}
 	
-	private void removeFoodItemAtIndex(int index) {
-//		Dot[] newDots = new Dot[dots.length - 1];
-//		System.arraycopy(dots, 0, newDots, 0, index);
-//		System.arraycopy(dots, index + 1, newDots, index, newDots.length - index);
-//		dots = newDots;
-		
-		FoodItem[] newFoodItems = new FoodItem[fooditems.length - 1];
-		System.arraycopy(fooditems, 0, newFoodItems, 0, index);
-		System.arraycopy(fooditems, index + 1, newFoodItems, index, newFoodItems.length - index);
-		fooditems = newFoodItems;
+	public void pacManAtePowerPellet() {
+		for (Ghost ghost : ghosts)
+			ghost.pacManAtePowerPellet();
 	}
 	
-	private void removeFoodItemAtSquare(Square square) {
-//		for (int i = 0; i < dots.length; i++) {
-//			if (dots[i].getSquare().equals(square)) {
-//				removeDotAtIndex(i);
-//				return;
-//			}
-//		}
-		
-		for (int i = 0; i < fooditems.length; i++) {
-			if (fooditems[i].getSquare().equals(square)) {
-				removeFoodItemAtIndex(i);
+	private void removeFoodItemsAtIndex(int index) {
+		FoodItem[] newFoodItems = new FoodItem[foodItems.length - 1];
+		System.arraycopy(foodItems, 0, newFoodItems, 0, index);
+		System.arraycopy(foodItems, index + 1, newFoodItems, index, newFoodItems.length - index);
+		foodItems = newFoodItems;
+	}
+	
+	private void checkFoodItemCollision(Square square) {
+		for (int i = 0; i < foodItems.length; i++) {
+			if (foodItems[i].getSquare().equals(square)) {
+				foodItems[i].eatenByPacMan(this);
+				removeFoodItemsAtIndex(i);
 				return;
 			}
 		}
@@ -81,11 +69,7 @@ public class Maze {
 		Square newSquare = pacMan.getSquare().getNeighbor(direction);
 		if (newSquare.isPassable()) {
 			pacMan.setSquare(newSquare);
-			if(fooditems[newSquare.getRowIndex()*map.getWidth()+newSquare.getColumnIndex()] instanceof PowerPellet) {
-				for (Ghost ghost : ghosts)
-					ghost.pacManAtePowerPellet();
-				}
-			removeFoodItemAtSquare(newSquare);
+			checkFoodItemCollision(newSquare);
 			checkPacManDamage();
 		}
 	}

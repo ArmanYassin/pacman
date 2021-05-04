@@ -11,17 +11,11 @@ public class MazeDescriptions {
 		String[] lines = description.trim().split("\n");
 		
 		int height = lines.length;
-		int width = lines[0].length(); 
+		int width = lines[0].length();
 		
 		boolean[] passable = new boolean[height * width];
 		for (int i = 0; i < passable.length; i++)
 			passable[i] = true;
-		
-//		int nbDots = 0;
-//		Dot[] dots = new Dot[width * height];
-//		
-//		int nbPowerPellets = 0;
-//		PowerPellet[] powerPellets = new PowerPellet[width * height];
 		
 		int nbFoodItems = 0;
 		FoodItem[] foodItems = new FoodItem[width * height];

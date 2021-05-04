@@ -12,30 +12,28 @@ import java.util.Random;
 public class Ghost {
 	
 	/**
+	 * @invar | originalSquare != null
 	 * @invar | square != null
 	 * @invar | direction != null
 	 */
-	private Square OriginalSquare;//Toegevoegd 06/04
+	private final Square originalSquare;
 	private Square square;
 	private Direction direction;
-	private GhostState state;
-	int delay;
+	private GhostState state = new RegularGhostState();
+	
+	public boolean isVulnerable() { return state.isVulnerable(); }
 
+	public Square getOriginalSquare() { return originalSquare; }
+	
 	/**
 	 * @basic
 	 */
 	public Square getSquare() { return square; }
-	
-	/*
-	 * Toegevoegd 06/04
-	 */
-	public Square getOriginalSquare() { return OriginalSquare; }
+
 	/**
 	 * @basic
 	 */
 	public Direction getDirection() { return direction; }
-	
-	public GhostState getGhostState() { return state; }
 	
 	/**
 	 * Initializes this object so that its initial position is the
@@ -54,10 +52,8 @@ public class Ghost {
 		if (direction == null)
 			throw new IllegalArgumentException("`direction` is null");
 		
-		this.OriginalSquare = square; //aangepast 06/04
+		this.square = this.originalSquare = square;
 		this.direction = direction;
-		this.state = new RegularGhostState();
-		
 	}
 	
 	/**
@@ -77,7 +73,6 @@ public class Ghost {
 		this.square = square;
 	}
 	
-	
 	/**
 	 * Sets this ghost's direction.
 	 * 
@@ -93,24 +88,6 @@ public class Ghost {
 			throw new IllegalArgumentException("`direction` is null");
 
 		this.direction = direction;
-	}
-	public void setState(GhostState state) {
-		if (state == null)
-			throw new IllegalArgumentException("`state` is null");
-
-		this.state = state;
-	}
-	public void setRegularState() {
-		if (state == null)
-			throw new IllegalArgumentException("`state` is null");
-
-		this.state = new RegularGhostState();
-	}
-	public void setVulnerableState() {
-		if (state == null)
-			throw new IllegalArgumentException("`state` is null");
-
-		this.state = new VulnerableGhostState();
 	}
 	
 	private static int MOVE_FORWARD_PREFERENCE = 10;
@@ -128,29 +105,21 @@ public class Ghost {
 	}
 	
 	// No formal documentation required.
+	public void move(Random random) {
+		state = state.move(this, random);
+	}
+	
 	public void reallyMove(Random random) {
 		setDirection(chooseNextMoveDirection(random));
 		setSquare(getSquare().getNeighbor(getDirection()));
 	}
-	
-	public void move(Random random) {
-		setState(state.move(this,random));
-	}
-	
-	
-	public boolean isVulnerable() {
-		return this.state instanceof VulnerableGhostState;
-	}
-	
-	public void hitBy(PacMan pacMan) {
-		this.state.hitBy(this, pacMan);
-	}
-	
-	// Na implementatie Maze aanpassen zoals in opgave
+
 	public void pacManAtePowerPellet() {
-		//hoe naar vulnerable omzetten 
-		this.setVulnerableState();
-		this.setDirection(getDirection().getOpposite());
+		direction = direction.getOpposite();
+		state = new VulnerableGhostState();
 	}
-	
+
+	public void hitBy(PacMan pacMan) {
+		state = state.hitBy(this, pacMan);
+	}
 }

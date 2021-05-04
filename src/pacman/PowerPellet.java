@@ -1,15 +1,21 @@
 package pacman;
 
-public class PowerPellet extends FoodItem{
-	int size = 2;
-	public PowerPellet(Square square){
-		this.square = square;
-	}
+public class PowerPellet extends FoodItem {
 	
 	/**
-	 * @post | result == 2 
+	 * @post | result == 2
 	 */
+	@Override
 	public int getSize() {
-		return size;
+		return 2;
 	}
-}	
+	
+	public PowerPellet(Square square) {
+		super(square);
+	}
+	
+	@Override
+	public void eatenByPacMan(Maze maze) {
+		maze.pacManAtePowerPellet();
+	}
+}
