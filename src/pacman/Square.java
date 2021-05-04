@@ -1,6 +1,11 @@
 package pacman;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+import pacman.wormholes.ArrivalPortal;
+import pacman.wormholes.DeparturePortal;
 
 /**
  * Each instance of this class represents a position in a maze, specified by a row index and a column index.
@@ -129,4 +134,6 @@ public class Square {
 		return mazeMap == other.mazeMap && rowIndex == other.rowIndex && columnIndex == other.columnIndex;
 	}
 	
+	Set<ArrivalPortal> arrivalportals = new HashSet<>();
+	Set<DeparturePortal> departureportals = new HashSet<>(); 
 }
