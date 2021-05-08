@@ -12,15 +12,18 @@ public class ArrivalPortal {
 	Square square;
 	Set<Wormhole> wormholes = new HashSet<>(); 
 	
-	public Square getSquare() {
-		return null;
+	public Square  getSquare() {
+		return square;
 	} 
+	
 	public Set<Wormhole> getWormholes(){
-		return null;
+		return Set.copyOf(wormholes);
 	}
 	
-	public ArrivalPortal() {}
+	//public ArrivalPortal() {}
 	
-	public ArrivalPortal(Square square) {}
+	public ArrivalPortal(Square square) {
+		this.square = square;
+	}
 
 }

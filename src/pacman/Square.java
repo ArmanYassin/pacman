@@ -31,6 +31,8 @@ public class Square {
 	private final MazeMap mazeMap;
 	private final int rowIndex;
 	private final int columnIndex;
+	Set<ArrivalPortal> arrivalportals = new HashSet<>();
+	Set<DeparturePortal> departureportals = new HashSet<>(); 
 	
 	/**
 	 * @basic
@@ -134,6 +136,5 @@ public class Square {
 		return mazeMap == other.mazeMap && rowIndex == other.rowIndex && columnIndex == other.columnIndex;
 	}
 	
-	Set<ArrivalPortal> arrivalportals = new HashSet<>();
-	Set<DeparturePortal> departureportals = new HashSet<>(); 
+	
 }

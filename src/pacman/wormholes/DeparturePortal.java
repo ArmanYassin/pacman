@@ -11,14 +11,17 @@ public class DeparturePortal {
 	Set<Wormhole> wormholes = new HashSet<>(); 
 	
 	public Square getSquare() {
-		return null;
+		return square;
 	}
 	public Set<Wormhole> getWormholes(){
-		return null;
+		return Set.copyOf(wormholes);
+	}
+	//public DeparturePortal() {}
+	 
+	public DeparturePortal(Square square) {
+		this.square = square;
 	}
 	
-	public DeparturePortal() {}
-	 
-	public DeparturePortal(Square square) {}
+	
 
 }

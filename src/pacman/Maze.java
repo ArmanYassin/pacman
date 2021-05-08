@@ -1,7 +1,12 @@
 package pacman;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+
+import pacman.wormholes.ArrivalPortal;
+import pacman.wormholes.DeparturePortal;
+import pacman.wormholes.Wormhole;
 
 public class Maze {
 	
@@ -10,6 +15,10 @@ public class Maze {
 	private PacMan pacMan;
 	private Ghost[] ghosts;
 	private FoodItem[] foodItems;
+	private ArrivalPortal[] arrivals;
+	private DeparturePortal[] departures;
+	private Wormhole [] wormholes;
+	private ArrayList<Wormhole> wormholesList;
 	
 	public MazeMap getMap() { return map; }
 	
@@ -19,12 +28,16 @@ public class Maze {
 	
 	public FoodItem[] getFoodItems() { return foodItems.clone(); }
 	
-	public Maze(Random random, MazeMap map, PacMan pacMan, Ghost[] ghosts, FoodItem[] foodItems) {
+	//Extended
+	public Maze(Random random, MazeMap map, PacMan pacMan, Ghost[] ghosts, FoodItem[] foodItems, DeparturePortal[] departures, ArrivalPortal[] arrivals) {
 		this.random = random;
 		this.map = map;
 		this.pacMan = pacMan;
 		this.ghosts = ghosts.clone();
 		this.foodItems = foodItems.clone();
+		this.departures = departures.clone();
+		this.arrivals = arrivals.clone();
+		
 	}
 	
 	public boolean isCompleted() {
@@ -72,6 +85,59 @@ public class Maze {
 			checkFoodItemCollision(newSquare);
 			checkPacManDamage();
 		}
+		//toegevoegd: beter in laatste if opnemen?
+		for(DeparturePortal depart : departures) {
+			if(depart.getSquare().equals(newSquare)) {
+				Wormhole[] worms = (Wormhole[]) depart.getWormholes().toArray();
+				pacMan.setSquare(worms[random.nextInt(worms.length)].getArrivalPortal().getSquare());
+				for (Ghost ghost : ghosts) {
+					if(ghost.getSquare().equals(depart.getSquare())
+							&&ghost.getSquare().equals(pacMan.getSquare()))
+						ghost.hitBy(pacMan);
+				}
+				
+			}
+		}
 	}
+	//toegevoegd
+	// Defensief niet vergeten
+	public void addWormhole(Wormhole wormhole) {
+		wormholesList = new ArrayList<>();
+		wormholesList.add(wormhole);
+	}
+	//toegevoegd
+	public Wormhole[] getWormholes(){
+		wormholes = new Wormhole[wormholesList.size()];
+		return wormholesList.toArray(wormholes).clone();
+	}
+	//toegevoegd
+	public DeparturePortal[] getDeparturePortals() {
+		ArrayList<DeparturePortal> depart = new ArrayList<DeparturePortal>();
+		for(int i = 0; i<departures.length;i++) {
+			for(int j = 1; j<departures.length;j++) {
+				if(departures[i].getSquare().getColumnIndex()
+					<departures[j].getSquare().getColumnIndex()  //sorteren links naar rechts
+						&& departures[i].getSquare().getRowIndex()
+						    <departures[j].getSquare().getRowIndex()) //sorteren boven naar onder
+					depart.add(departures[i]);
+			}			
+		}
+		return depart.toArray(departures).clone();
+	}
+	//toegevoegd
+	public ArrivalPortal[] getArrivalPortals() {
+		ArrayList<ArrivalPortal> arrival = new ArrayList<ArrivalPortal>();
+		for(int i = 0; i<arrivals.length;i++) {
+			for(int j = 1; j<arrivals.length;j++) {
+				if(arrivals[i].getSquare().getColumnIndex()
+					<arrivals[j].getSquare().getColumnIndex()  //sorteren links naar rechts
+						&& arrivals[i].getSquare().getRowIndex()
+						    <arrivals[j].getSquare().getRowIndex()) //sorteren boven naar onde
+					arrival.add(arrivals[i]);
+			}			
+		}
+		return arrival.toArray(arrivals).clone();
+	}
+	
 	
 }
