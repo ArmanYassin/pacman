@@ -89,8 +89,8 @@ public class Maze {
 		//toegevoegd: beter in laatste if opnemen?
 		for(DeparturePortal depart : departures) {
 			if(depart.getSquare().equals(newSquare)) {
-				Wormhole[] worms = (Wormhole[]) depart.getWormholes().toArray();
-				pacMan.setSquare(worms[random.nextInt(worms.length)].getArrivalPortal().getSquare());
+				//Wormhole[] worms = (Wormhole[]) depart.getWormholes().toArray();
+				pacMan.setSquare(wormholes[random.nextInt(wormholes.length)].getArrivalPortal().getSquare());
 				for (Ghost ghost : ghosts) {
 					if(ghost.getSquare().equals(depart.getSquare())
 							&&ghost.getSquare().equals(pacMan.getSquare()))

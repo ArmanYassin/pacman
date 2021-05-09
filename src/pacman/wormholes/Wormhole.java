@@ -18,7 +18,7 @@ public class Wormhole {
 	//public Wormhole() {}
 	public Wormhole(DeparturePortal depart, ArrivalPortal arrival) {
 		this.departure = depart;
-		departure.wormholes.add(this);
+		depart.wormholes.add(this);
 		this.arrival = arrival;
 		arrival.wormholes.add(this);
 	}
