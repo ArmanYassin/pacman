@@ -1,5 +1,7 @@
 package pacman;
 
+import pacman.wormholes.Square;
+
 public class PowerPellet extends FoodItem {
 	
 	/**

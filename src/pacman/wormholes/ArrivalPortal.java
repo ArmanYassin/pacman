@@ -3,8 +3,6 @@ package pacman.wormholes;
 import java.util.HashSet;
 import java.util.Set;
 
-import pacman.Square;
-
 //Each arrival portal is associated with a square
 
 public class ArrivalPortal {
@@ -24,6 +22,7 @@ public class ArrivalPortal {
 	
 	public ArrivalPortal(Square square) {
 		this.square = square;
+		square.arrivalportals.add(this);
 	}
 
 }

@@ -1,5 +1,7 @@
 package pacman;
 
+import pacman.wormholes.Square;
+
 /**
  * Each instance of this class represents the Pac-Man character in a Pac-Man maze.
  * 

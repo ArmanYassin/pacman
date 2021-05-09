@@ -6,6 +6,7 @@ import java.util.Random;
 
 import pacman.wormholes.ArrivalPortal;
 import pacman.wormholes.DeparturePortal;
+import pacman.wormholes.Square;
 import pacman.wormholes.Wormhole;
 
 public class Maze {
@@ -112,31 +113,56 @@ public class Maze {
 	}
 	//toegevoegd
 	public DeparturePortal[] getDeparturePortals() {
-		ArrayList<DeparturePortal> depart = new ArrayList<DeparturePortal>();
-		for(int i = 0; i<departures.length;i++) {
-			for(int j = 1; j<departures.length;j++) {
-				if(departures[i].getSquare().getColumnIndex()
-					<departures[j].getSquare().getColumnIndex()  //sorteren links naar rechts
+		for(int i = 0; i<departures.length-1;i++) {
+			if(departures[i].getSquare().getColumnIndex()
+					>departures[i+1].getSquare().getColumnIndex()  //sorteren links naar rechts
 						&& departures[i].getSquare().getRowIndex()
-						    <departures[j].getSquare().getRowIndex()) //sorteren boven naar onder
-					depart.add(departures[i]);
-			}			
+						    >departures[i+1].getSquare().getRowIndex()) {
+				DeparturePortal temp = departures[i];
+                departures[i] = departures[i+1];
+                departures[i+1] = temp;
+			}
 		}
-		return depart.toArray(departures).clone();
+//		ArrayList<DeparturePortal> depart = new ArrayList<DeparturePortal>();
+//		for(int i = 0; i<departures.length;i++) {
+//			for(int j = 1; j<departures.length;j++) {
+//				if(departures[i].getSquare().getColumnIndex()
+//					<departures[j].getSquare().getColumnIndex()  //sorteren links naar rechts
+//						&& departures[i].getSquare().getRowIndex()
+//						    <departures[j].getSquare().getRowIndex()) //sorteren boven naar onder
+//					depart.add(departures[i]);
+//			}			
+//		}
+		return departures;//depart.toArray(departures).clone();
 	}
 	//toegevoegd
 	public ArrivalPortal[] getArrivalPortals() {
-		ArrayList<ArrivalPortal> arrival = new ArrayList<ArrivalPortal>();
+		
+//		for(int i = 0; i<arrivals.length-1;i++) {
+//			
+//			if(arrivals[i].getSquare().getColumnIndex()
+//					<arrivals[i+1].getSquare().getColumnIndex()  //sorteren links naar rechts
+//						&& arrivals[i].getSquare().getRowIndex()
+//						    <arrivals[i+1].getSquare().getRowIndex()) {
+//				  ArrivalPortal temp = arrivals[i];
+//                arrivals[i] = arrivals[i+1];
+//                arrivals[i+1] = temp;
+//			}
+//		}
+//		ArrayList<ArrivalPortal> arrival = new ArrayList<ArrivalPortal>();
 		for(int i = 0; i<arrivals.length;i++) {
 			for(int j = 1; j<arrivals.length;j++) {
 				if(arrivals[i].getSquare().getColumnIndex()
-					<arrivals[j].getSquare().getColumnIndex()  //sorteren links naar rechts
+					>arrivals[j].getSquare().getColumnIndex()  //sorteren links naar rechts
 						&& arrivals[i].getSquare().getRowIndex()
-						    <arrivals[j].getSquare().getRowIndex()) //sorteren boven naar onde
-					arrival.add(arrivals[i]);
+						    >arrivals[j].getSquare().getRowIndex()) { //sorteren boven naar onde
+					ArrivalPortal temp = arrivals[i];
+	                arrivals[i] = arrivals[j];
+	                arrivals[j] = temp;
+					}
 			}			
 		}
-		return arrival.toArray(arrivals).clone();
+		return arrivals;//arrival.toArray(arrivals).clone();
 	}
 	
 	

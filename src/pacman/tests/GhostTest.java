@@ -8,7 +8,7 @@ import pacman.Direction;
 import pacman.Ghost;
 import pacman.MazeMap;
 import pacman.PacMan;
-import pacman.Square;
+import pacman.wormholes.Square;
 
 class GhostTest {
 

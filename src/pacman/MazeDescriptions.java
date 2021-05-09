@@ -5,6 +5,7 @@ import java.util.Random;
 
 import pacman.wormholes.ArrivalPortal;
 import pacman.wormholes.DeparturePortal;
+import pacman.wormholes.Square;
 
 public class MazeDescriptions {
 	

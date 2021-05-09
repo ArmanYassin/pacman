@@ -2,6 +2,8 @@ package pacman;
 
 import java.util.Random;
 
+import pacman.wormholes.Square;
+
 /**
  * Each instance of this class represents a ghost in a Pac-Man maze,
  * located at a particular position and moving in a particular direction.

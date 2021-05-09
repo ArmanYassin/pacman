@@ -1,11 +1,11 @@
-package pacman;
+package pacman.wormholes;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import pacman.wormholes.ArrivalPortal;
-import pacman.wormholes.DeparturePortal;
+import pacman.Direction;
+import pacman.MazeMap;
 
 /**
  * Each instance of this class represents a position in a maze, specified by a row index and a column index.
@@ -33,6 +33,7 @@ public class Square {
 	private final int columnIndex;
 	Set<ArrivalPortal> arrivalportals = new HashSet<>();
 	Set<DeparturePortal> departureportals = new HashSet<>(); 
+	
 	
 	/**
 	 * @basic

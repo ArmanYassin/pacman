@@ -1,6 +1,5 @@
 package pacman.wormholes;
 
-import pacman.Square;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +19,7 @@ public class DeparturePortal {
 	 
 	public DeparturePortal(Square square) {
 		this.square = square;
+		square.departureportals.add(this);
 	}
 	
 	

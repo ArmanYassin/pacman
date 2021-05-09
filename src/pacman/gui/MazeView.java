@@ -26,9 +26,9 @@ import pacman.Ghost;
 import pacman.Maze;
 import pacman.MazeDescriptions;
 import pacman.MazeMap;
-import pacman.Square;
 import pacman.wormholes.ArrivalPortal;
 import pacman.wormholes.DeparturePortal;
+import pacman.wormholes.Square;
 import pacman.wormholes.Wormhole;
 
 public class MazeView extends JPanel {
@@ -271,5 +271,5 @@ public class MazeView extends JPanel {
 		for (int i = 0; i < maze.getPacMan().getNbLives(); i++)
 			g.fillOval(i * (lifeSize + 2 * lifeMargin) + lifeMargin, map.getHeight() * squareSize + lifeMargin, lifeSize, lifeSize);
 	}
-
+	
 }

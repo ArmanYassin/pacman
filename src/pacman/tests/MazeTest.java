@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import pacman.Maze;
 import pacman.MazeDescriptions;
 import pacman.PowerPellet;
-import pacman.Square;
+import pacman.wormholes.Square;
 
 class MazeTest {
 	

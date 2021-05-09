@@ -1,5 +1,7 @@
 package pacman;
 
+import pacman.wormholes.Square;
+
 public abstract class FoodItem {
 	
 	/**

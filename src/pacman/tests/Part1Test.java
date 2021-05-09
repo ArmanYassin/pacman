@@ -11,7 +11,7 @@ import pacman.Direction;
 import pacman.Dot;
 import pacman.MazeMap;
 import pacman.PacMan;
-import pacman.Square;
+import pacman.wormholes.Square;
 
 class Part1Test {
 
