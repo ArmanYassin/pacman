@@ -19,7 +19,8 @@ public class Maze {
 	private ArrivalPortal[] arrivals;
 	private DeparturePortal[] departures;
 	private Wormhole [] wormholes;
-	private ArrayList<Wormhole> wormholesList;
+	//private ArrayList<Wormhole> wormholesList;
+	ArrayList<Wormhole> wormholesList = new ArrayList<Wormhole>();
 	
 	public MazeMap getMap() { return map; }
 	
@@ -103,12 +104,14 @@ public class Maze {
 	//toegevoegd
 	// Defensief niet vergeten
 	public void addWormhole(Wormhole wormhole) {
-		wormholesList = new ArrayList<>();
+		
 		wormholesList.add(wormhole);
 	}
 	//toegevoegd
 	public Wormhole[] getWormholes(){
 		wormholes = new Wormhole[wormholesList.size()];
+//		for(int i = 0; i<wormholesList.size();i++)
+//			wormholes[i]=wormholesList.get(i);
 		return wormholesList.toArray(wormholes).clone();
 	}
 	//toegevoegd

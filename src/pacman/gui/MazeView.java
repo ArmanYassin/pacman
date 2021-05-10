@@ -272,4 +272,6 @@ public class MazeView extends JPanel {
 			g.fillOval(i * (lifeSize + 2 * lifeMargin) + lifeMargin, map.getHeight() * squareSize + lifeMargin, lifeSize, lifeSize);
 	}
 	
+	
+	
 }

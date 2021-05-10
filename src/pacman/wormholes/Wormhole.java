@@ -1,5 +1,7 @@
 package pacman.wormholes;
 
+import java.util.ArrayList;
+
 /*
  * Each wormhole is associated, at each point in time, with exactly one departure
  * and exactly one arrival portal
@@ -18,8 +20,8 @@ public class Wormhole {
 	//public Wormhole() {}
 	public Wormhole(DeparturePortal depart, ArrivalPortal arrival) {
 		this.departure = depart;
-		depart.wormholes.add(this);
 		this.arrival = arrival;
+		depart.wormholes.add(this);
 		arrival.wormholes.add(this);
 	}
 	
@@ -48,6 +50,7 @@ public class Wormhole {
 //			throw new IllegalArgumentException("departure portal already availabe for this");
 		this.departure = departure;
 		departure.wormholes.add(this);
+		
 	}
 	
 	
