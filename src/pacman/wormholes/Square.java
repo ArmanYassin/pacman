@@ -27,12 +27,15 @@ public class Square {
 	 * @invar | rowIndex < mazeMap.getHeight()
 	 * @invar | 0 <= columnIndex
 	 * @invar | columnIndex < mazeMap.getWidth()
+	 * @invar | departureportals == null || departureportals.stream().allMatch(d -> d.square == this)
+	 * @invar | arrivalportals == null || arrivalportals.stream().allMatch(a -> a.square == this)
+	 * @peerObject
 	 */
 	private final MazeMap mazeMap;
 	private final int rowIndex;
 	private final int columnIndex;
-	Set<ArrivalPortal> arrivalportals = new HashSet<>();
 	Set<DeparturePortal> departureportals = new HashSet<>(); 
+	Set<ArrivalPortal> arrivalportals = new HashSet<>();
 	
 	
 	/**

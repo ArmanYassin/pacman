@@ -89,7 +89,7 @@ public class Maze {
 		}
 		//toegevoegd: beter in laatste if opnemen?
 		for(DeparturePortal depart : departures) {
-			if(depart.getSquare().equals(newSquare)) {
+			if(depart.getSquare().equals(newSquare)&&depart.getWormholes().size()>1) {//nieuwe voorwaarde
 				//Wormhole[] worms = (Wormhole[]) depart.getWormholes().toArray();
 				pacMan.setSquare(wormholes[random.nextInt(wormholes.length)].getArrivalPortal().getSquare());
 				for (Ghost ghost : ghosts) {
